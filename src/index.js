@@ -4,6 +4,7 @@ import router from './router'
 import mongoose from 'mongoose'
 
 let _server
+const port = process.env.PORT || 9000
 
 const server = {
   start() {
@@ -17,9 +18,9 @@ const server = {
         config(app)
         router(app)
 
-        _server = app.listen('9000', () => {
+        _server = app.listen(port, () => {
           if (process.env.NODE_ENV !== 'test') {
-            console.log('Servidor arrancado en el puerto 9000')
+            console.log('Server running at port ' + port)
           }
         })
       })
