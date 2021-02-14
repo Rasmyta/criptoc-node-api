@@ -1,6 +1,7 @@
 import express from 'express'
 import Criptomoneda from '../models/criptomoneda'
 import getNewId from '../models/utils'
+import { auth } from '../middlewares'
 
 const bodyParser = require('body-parser')
 const router = express.Router()
@@ -97,7 +98,7 @@ router.post('/', async (req, res, next) => {
 })
 
 // Borra la criptomoneda con ese id
-router.delete('/id/:id', async (req, res, next) => {
+router.delete('/id/:id', auth, async (req, res, next) => {
   let data = await Criptomoneda.deleteOne({ id: req.params.id })
 
   res.status(200).json({ documents_deleted: data.deletedCount })
