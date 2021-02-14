@@ -19,7 +19,7 @@ const server = {
 
         _server = app.listen('9000', () => {
           if (process.env.NODE_ENV !== 'test') {
-            console.log('Servidor arrancado en http://localhost:9000')
+            console.log('Servidor arrancado en el puerto 9000')
           }
         })
       })
