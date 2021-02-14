@@ -19,6 +19,7 @@ const server = {
 
         app.get('/', async (req, res, next) => {
           res.write('<h2>Bienvenidos a API REST sobre criptomonedas</h2>')
+          res.end()
         })
 
         router(app)
