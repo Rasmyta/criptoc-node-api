@@ -23,6 +23,7 @@ var _mongoose2 = _interopRequireDefault(_mongoose);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 let _server;
+const port = process.env.PORT || 9000; // !important for deployment
 
 const server = {
   start() {
@@ -31,9 +32,9 @@ const server = {
       (0, _config2.default)(app);
       (0, _router2.default)(app);
 
-      _server = app.listen('9000', () => {
+      _server = app.listen(port, () => {
         if (process.env.NODE_ENV !== 'test') {
-          console.log('Servidor arrancado en el puerto 9000');
+          console.log('Server running at port ' + port);
         }
       });
     });

@@ -16,6 +16,8 @@ var _utils = require('../models/utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
+var _middlewares = require('../middlewares');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const bodyParser = require('body-parser');
@@ -102,7 +104,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // Borra la criptomoneda con ese id
-router.delete('/id/:id', async (req, res, next) => {
+router.delete('/id/:id', _middlewares.auth, async (req, res, next) => {
   let data = await _criptomoneda2.default.deleteOne({ id: req.params.id });
 
   res.status(200).json({ documents_deleted: data.deletedCount });
