@@ -17,7 +17,7 @@ const server = {
         const app = express()
         config(app)
 
-        router.get('/', async (req, res, next) => {
+        app.get('/', async (req, res, next) => {
           res.write('<h2>Bienvenidos a API REST sobre criptomonedas</h2>')
         })
 
