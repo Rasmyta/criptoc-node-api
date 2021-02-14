@@ -4,7 +4,7 @@ import router from './router'
 import mongoose from 'mongoose'
 
 let _server
-const port = process.env.PORT || 9000
+const port = process.env.PORT || 9000 // !important for deployment
 
 const server = {
   start() {
@@ -16,6 +16,11 @@ const server = {
       .then(() => {
         const app = express()
         config(app)
+
+        router.get('/', async (req, res, next) => {
+          res.write('<h2>Bienvenidos a API REST sobre criptomonedas</h2>')
+        })
+
         router(app)
 
         _server = app.listen(port, () => {
